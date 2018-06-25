@@ -9,6 +9,21 @@ $(document).ready(function(){
 
 	});	
 
+	$('#textMovieYear').click(function(){
+		
+		$('#textMovieId').css('border','none');
+		$('.showErrorMovieIdNotFound').slideUp(300);		
+		$('#textMovieId').css('border','none');	
+		$('.showErrorMovieId').slideUp(300);
+
+		$('#textMovieTitle').css('border','none');
+		$('.showErrorMovieTitle').slideUp(300);
+		$('#textMovieTitle').css('border','none');
+		$('.showErrorMovieTitleNotFound').slideUp(300);
+
+	});	
+
+
 	$('#btn-MovieTitle').click(function(){
 
 		
@@ -89,6 +104,8 @@ function getTitleData(getTitle,getYear)
 				{
 					rating = response.Ratings;	
 				}
+
+				
 
 				var dummyCard = `
 								 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center padding">

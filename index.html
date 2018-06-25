@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand|Tajawal" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="imdb.css">
+
+    <title>Search movie</title>
+  </head>
+  <body>
+
+    <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid heading">
+      <div class="row" style="background: #e7e6fc; padding: 1rem;">
+        <div class="col-6">
+            <h5>By Id</h5>
+            <hr>
+            <div class="row">
+              
+              <div class="col-md-12 col-lg-8 col-xl-8 flexpad">
+
+                <input type="text" placeholder="Movie Id" class="textId" id="textMovieId">
+                <div class="alert alert-danger showErrorMovieId" role="alert">
+                  <h6><strong>Movie Id</strong> require</h6>
+                </div>  
+                <div class="alert alert-danger showErrorMovieIdNotFound" role="alert">
+                  <h6>Incorrect <strong>IMDB ID</strong></h6>
+                </div>
+
+              </div>
+
+              <div class="col-md-12 col-lg-4 col-xl-4 flexpad" style="text-align: right;">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit" style="width: 100%;" id="btn-MovieId">Search</button>
+              </div>
+
+            </div>
+
+            
+        </div>
+        <div class="col-6">
+          <h5>By Title</h5>
+            <hr>
+            <div class="row">
+              <div class="col-md-12 col-lg-6 col-xl-6 flexpad">
+                <input type="text" placeholder="Movie Title" class="textTitle" id="textMovieTitle">
+                <div class="alert alert-danger showErrorMovieTitle" role="alert">
+                  <h6><strong>Movie Title</strong> require</h6>
+                </div>  
+                <div class="alert alert-danger showErrorMovieTitleNotFound" role="alert">
+                  <h6><strong>Movie</strong> not found</h6>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-2 col-xl-2 flexpad">
+                <input type="text" placeholder="Year" class="textYear" id="textMovieYear">
+              </div>
+              <div class="col-md-12 col-lg-4 col-xl-4 flexpad" style="text-align: right;">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit" style="width: 100%;" id="btn-MovieTitle">Search</button>
+              </div>
+            </div>          
+        </div>
+    
+        <div class="row">
+          <div class="col-12">
+              <h6 style="padding-left: 15px; padding-top: 15px; color: #721c24; font-size: .8em;">* Year is not mendatory.</h6>    
+          </div>
+          <div class="col-12">
+              <h6 style="padding-left: 15px; padding-top: 15px; color: #721c24; font-size: .8em;">* You can get N number of result until page refreshed.</h6>    
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="container-fluid">
+       <div class="row display">
+      </div>
+    </div>
+
+  </body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script src="searchById.js"></script>
+
+<script src="searchByTitle.js"></script>
+
+</html>

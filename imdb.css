@@ -1,0 +1,83 @@
+body
+{
+	font-family: 'Tajawal', sans-serif;
+}
+.heading
+{
+	padding: 5rem;
+	background: #34222e;
+}
+.flexpad
+{
+	margin-top: 10px;
+}
+.padding
+{
+	display: block;
+	margin-top: 2rem;
+	font-family: 'Tajawal', sans-serif;
+	animation: fadeIn .5s;
+}
+.card-title1
+{
+	font-size: .8em;
+}
+@keyframes fadeIn 
+{
+	from
+	{
+		opacity: 0;
+	}
+	to
+	{
+		opacity: 1;
+	}
+}
+.textId
+{
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	padding: 8px;
+	width: 100%;
+} 
+.display
+{
+	margin: 1rem 0;
+}
+.showErrorMovieId
+{
+	margin-top: 10px;
+	display: none;
+}
+.showErrorMovieIdNotFound
+{
+	margin-top: 10px;
+	display: none;
+}
+.textTitle
+{
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	padding: 8px;
+	width: 100%;
+} 
+.textYear
+{
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	padding: 8px;
+	width: 100%;
+} 
+.showErrorMovieTitle
+{
+	margin-top: 10px;
+	display: none;
+}
+.showErrorMovieTitleNotFound
+{
+	margin-top: 10px;
+	display: none;
+}

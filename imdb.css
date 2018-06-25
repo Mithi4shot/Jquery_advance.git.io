@@ -81,3 +81,11 @@ body
 	margin-top: 10px;
 	display: none;
 }
+
+@media (max-width: 575px)
+{
+	.title-margin
+	{
+		margin-top: 2rem;
+	}
+}

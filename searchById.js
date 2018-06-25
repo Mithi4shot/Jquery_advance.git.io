@@ -49,7 +49,7 @@ function getIdData(getId)
 		type: 'GET',
 		getData: 'json',
 		async: true,
-		url: 'http://www.omdbapi.com/?i='+ getId +'&apikey=24e011cb',
+		url: 'https://www.omdbapi.com/?i='+ getId +'&apikey=24e011cb',
 
 		success: function(response){
 
@@ -69,6 +69,7 @@ function getIdData(getId)
 			else
 			{
 				var poster;
+				var rating;
 
 				if (response.Poster == 'N/A') 
 				{
@@ -77,6 +78,15 @@ function getIdData(getId)
 				else
 				{
 					poster = response.Poster;
+				}
+
+				if(response.Ratings == undefined || response.Ratings == '')	
+				{	
+					rating = 'N/A';
+				}
+				else
+				{
+					rating = response.Ratings;	
 				}
 
 				var dummyCard = `
@@ -95,9 +105,9 @@ function getIdData(getId)
 						              <li class="list-group-item"><b>${Object.keys(response)[10]}:</b> ${response.Language}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[11]}:</b> ${response.Country}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[12]}:</b> ${response.Awards}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[14]}:</b> ${response.Ratings[0]}</li>
+						              <li class="list-group-item"><b>${Object.keys(response)[14]}:</b> ${rating}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[15]}:</b> ${response.Metascore}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[16]}:</b>${response.imdbRating}</li>
+						              <li class="list-group-item"><b>${Object.keys(response)[16]}:</b> ${response.imdbRating}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[17]}:</b> ${response.imdbVotes}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[18]}:</b> ${response.imdbID}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[19]}:</b> ${response.Type}</li>

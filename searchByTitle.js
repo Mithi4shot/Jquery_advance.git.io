@@ -50,7 +50,7 @@ function getTitleData(getTitle,getYear)
 		type: 'GET',
 		getData: 'json',
 		async: true,
-		url: 'http://www.omdbapi.com/?t='+ getTitle +'&y='+ getYear +'&apikey=24e011cb',
+		url: 'https://www.omdbapi.com/?t='+ getTitle +'&y='+ getYear +'&apikey=24e011cb',
 
 		success: function(response){
 
@@ -90,8 +90,6 @@ function getTitleData(getTitle,getYear)
 					rating = response.Ratings;	
 				}
 
-				
-
 				var dummyCard = `
 								 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center padding">
 						          <div class="card shadow-lg" style="width: 18rem;">
@@ -110,7 +108,7 @@ function getTitleData(getTitle,getYear)
 						              <li class="list-group-item"><b>${Object.keys(response)[12]}:</b> ${response.Awards}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[14]}:</b> ${rating}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[15]}:</b> ${response.Metascore}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[16]}:</b>${response.imdbRating}</li>
+						              <li class="list-group-item"><b>${Object.keys(response)[16]}:</b> ${response.imdbRating}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[17]}:</b> ${response.imdbVotes}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[18]}:</b> ${response.imdbID}</li>
 						              <li class="list-group-item"><b>${Object.keys(response)[19]}:</b> ${response.Type}</li>

@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	var uId=0;
+
 	$('#textMovieTitle').click(function(){
 		
 		$('#textMovieId').css('border','none');
@@ -47,7 +49,8 @@ $(document).ready(function(){
 		}
 		else
 		{
-			getTitleData(getTitle,getYear);
+			uId=uId+1;
+			getTitleData(getTitle,getYear,uId);
 			$('#textMovieTitle').val('');
 			$('#textMovieYear').val('');
 			$('#textMovieId').val('');
@@ -57,10 +60,8 @@ $(document).ready(function(){
 
 });
 
-function getTitleData(getTitle,getYear)
+function getTitleData(getTitle,getYear,uId)
 {
-	
-
 	$.ajax({
 		type: 'GET',
 		getData: 'json',
@@ -96,17 +97,6 @@ function getTitleData(getTitle,getYear)
 					poster = response.Poster;
 				}
 
-				if(response.Ratings == undefined || response.Ratings == '')	
-				{	
-					rating = 'N/A';
-				}
-				else
-				{
-					rating = response.Ratings;	
-				}
-
-				
-
 				var dummyCard = `
 								 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center padding">
 						          <div class="card shadow-lg" style="width: 18rem;">
@@ -117,31 +107,63 @@ function getTitleData(getTitle,getYear)
 						              <p class="card-text">${response.Plot}</p>
 						            </div>
 						            <ul class="list-group list-group-flush">
-						              <li class="list-group-item"><b>${Object.keys(response)[6]}:</b> ${response.Director}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[7]}:</b> ${response.Writer}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[8]}:</b> ${response.Actors}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[10]}:</b> ${response.Language}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[11]}:</b> ${response.Country}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[12]}:</b> ${response.Awards}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[14]}:</b> ${rating}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[15]}:</b> ${response.Metascore}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[16]}:</b> ${response.imdbRating}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[17]}:</b> ${response.imdbVotes}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[18]}:</b> ${response.imdbID}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[19]}:</b> ${response.Type}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[20]}:</b> ${response.DVD}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[21]}:</b> ${response.BoxOffice}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[22]}:</b> ${response.Production}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[23]}:</b> ${response.Website}</li>
-						              <li class="list-group-item"><b>${Object.keys(response)[24]}:</b> ${response.Response}</li>
-						              
-
+						              <li class="list-group-item" id="titledirectorVal${uId}"><b>${Object.keys(response)[6]}:</b> </li>
+						              <li class="list-group-item" id="titlewriterVal${uId}"><b>${Object.keys(response)[7]}:</b> </li>
+						              <li class="list-group-item" id="titleactorVal${uId}"><b>${Object.keys(response)[8]}:</b> </li>
+						              <li class="list-group-item" id="titlelanguageVal${uId}"><b>${Object.keys(response)[10]}:</b> </li>
+						              <li class="list-group-item" id="titlecountryVal${uId}"><b>${Object.keys(response)[11]}:</b> </li>
+						              <li class="list-group-item" id="titleawardVal${uId}"><b>${Object.keys(response)[12]}:</b> </li>
+						              <li class="list-group-item" id="titleratingVal${uId}"><b>${Object.keys(response)[14]}:</b> </li>
+						              <li class="list-group-item" id="titlemetascoreVal${uId}"><b>${Object.keys(response)[15]}:</b> </li>
+						              <li class="list-group-item" id="titleimdbratVal${uId}"><b>${Object.keys(response)[16]}:</b> </li>
+						              <li class="list-group-item" id="titleimdbvtVal${uId}"><b>${Object.keys(response)[17]}:</b> </li>
+						              <li class="list-group-item" id="titleimdbidVal${uId}"><b>${Object.keys(response)[18]}:</b> </li>
+						              <li class="list-group-item" id="titletypeVal${uId}"><b>${Object.keys(response)[19]}:</b> </li>
+						              <li class="list-group-item" id="titledvdVal${uId}"><b>${Object.keys(response)[20]}:</b> </li>
+						              <li class="list-group-item" id="titleboxofficeVal${uId}"><b>${Object.keys(response)[21]}:</b> </li>
+						              <li class="list-group-item" id="titleproductionVal${uId}"><b>${Object.keys(response)[22]}:</b> </li>
+						              <li class="list-group-item" id="titlewebsiteVal${uId}"><b>${Object.keys(response)[23]}:</b> </li>
+						              <li class="list-group-item" id="titleresponseVal${uId}"><b>${Object.keys(response)[24]}:</b> </li>
 						            </ul>
-						            
 						          </div>
 						         </div>`
-
 				$('.display').append(dummyCard);
+
+				$('#titledirectorVal'+uId).append(response.Director);
+				$('#titlewriterVal'+uId).append(response.Writer);
+				$('#titleactorVal'+uId).append(response.Actors);
+				$('#titlelanguageVal'+uId).append(response.Language);
+				$('#titlecountryVal'+uId).append(response.Country);
+				$('#titleawardVal'+uId).append(response.Awards);
+
+				if(response.Ratings == undefined || response.Ratings == '')	
+				{	
+					$('#titleratingVal'+uId).append('N/A');
+				}
+				else
+				{
+					for (x of response.Ratings)	
+					{
+						for (var i=0;i<Object.keys(x).length;i++) 
+						{
+							if(i==0)
+							{
+								$('#titleratingVal'+uId).append('<br>' + Object.values(x)[i] + ' : ' + Object.values(x)[i+1] + ',');
+							}
+						}
+					}	
+				}
+
+				$('#titlemetascoreVal'+uId).append(response.Metascore);
+				$('#titleimdbratVal'+uId).append(response.imdbRating);
+				$('#titleimdbvtVal'+uId).append(response.imdbVotes);
+				$('#titleimdbidVal'+uId).append(response.imdbID);
+				$('#titletypeVal'+uId).append(response.Type);
+				$('#titledvdVal'+uId).append(response.DVD);
+				$('#titleboxofficeVal'+uId).append(response.BoxOffice);
+				$('#titleproductionVal'+uId).append(response.Production);
+				$('#titlewebsiteVal'+uId).append(response.Website);
+				$('#titleresponseVal'+uId).append(response.Response);
 			}
 			
 		},
